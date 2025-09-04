@@ -69,13 +69,12 @@ func (t *TCPTransport) handleConnection(conn net.Conn) error {
 	return nil
 }
 
-func (t *TCPTransport) Dial(addr string) error {
+func (t *TCPTransport) Dial(addr string) (net.Conn, error) {
 	conn, err := net.Dial("tcp", addr)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	defer conn.Close()
-	return nil
+	return conn, nil
 }
 
 func (t *TCPTransport) retryServerStart() {

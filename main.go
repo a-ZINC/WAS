@@ -13,9 +13,6 @@ func main() {
 		agent.StartAgent()
 	}
 	if was.IsBroker {
-		err := broker.StartBroker()
-		if err != nil {
-			panic(err)
-		}
+		broker.StartBroker()
 	}
 }
